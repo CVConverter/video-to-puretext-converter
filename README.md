@@ -1,6 +1,11 @@
 # video-to-console-converter
 convert videos and pictures to text format for playing with the console player!  
-  
+
+![图片](https://user-images.githubusercontent.com/68136140/221356746-3bccab42-b94e-48cc-a223-77ddc40fb923.png)
+
+![图片](https://user-images.githubusercontent.com/68136140/221356662-92c914b5-cf98-4daf-bd9d-a74ee894127b.png)
+
+
 # How to use
 ## requirements
 - Microsoft Windows 10 20H1 or higher(not tested on windows 11 or windows 7, you can try it yourself.)
