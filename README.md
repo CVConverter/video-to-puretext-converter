@@ -24,6 +24,10 @@ for videos, use F1 and F2 to control the time of video(30 Frames per click)
 when you are ready, click 'Enter' to convert the whole video file to pure-text format.  
 for pictures, you can just click 'Enter' and copy the texts on the console.  
   
+## NOTICE
+- If it doesn't look right, try to maximize or full-screen the console window  
+(if it still doesn't look right, try to change the default value to make the console always be maximized when open.)  
+  
 # How to compile and edit
 ## requirements:  
 - Microsoft Windows 10 20H1 or higher(not tested on windows 11 or windows 7, you can try it yourself.)
