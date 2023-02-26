@@ -47,18 +47,20 @@ inline bool keyPress(int KeyCode)
 }
 inline void fatal(const char* err, bool code = false)
 {
-    cerr << "FATAL ERROR\n\n";
+    cerr << "\n.\n.\n.\n.\n.\n.\n.\nFATAL ERROR\n\n";
     cerr << "This program ran into a error that it couldn't handle,\n";
-    cerr << "and has to exit right now.";
+    cerr << "and has to exit right now.\n\n";
     if (code)
     {
-        cerr << "error-code: " << int(err[0] - '0');
+        cerr << "error-code: " << int(err[0] - '0') << "\n";
     }
     else
     {
         cerr << "error-info: ";
         puts(err);
     }
+    cerr << "\n\n\n";
+    system("pause");
     exit(err[0]);
 }
 void usage()
@@ -250,6 +252,11 @@ void ui(string filePath = "", char fileType = ' ')
     _v_:
         cap.release();
         cap.open(filePath);
+        if (!cap.isOpened())
+        {
+            fatal("Failed to locate targeting file(file not found or access denied).");
+        }
+
         for (int i = 0; i < Currentframe; ++i)
         {
             cap >> tmp;
