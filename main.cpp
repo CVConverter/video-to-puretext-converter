@@ -72,6 +72,26 @@ void usage()
     cout << "<type>\tThe file type. Video: \"-v\", Image:\"-i\".";
     cout << endl;
 }
+void fullScreen(HWND hwnd = nullptr)
+{
+    if (hwnd == nullptr)
+    {
+        hwnd = FindWindowA("ConsoleWindowClass", NULL);
+    }
+    ShowWindow(hwnd, SW_MAXIMIZE);
+}
+void setFontSize(int size = 6)
+{
+    CONSOLE_FONT_INFOEX cfi;
+    cfi.cbSize = sizeof(cfi);
+    cfi.nFont = 0;
+    cfi.dwFontSize.X = 0;                   // Width of each character in the font
+    cfi.dwFontSize.Y = size;                  // Height
+    cfi.FontFamily = FF_DONTCARE;
+    cfi.FontWeight = FW_NORMAL;
+    std::wcscpy(cfi.FaceName, L"Consolas"); // Choose your font
+    SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
+}
 
 inline bool inear(float a, float b, float dif = 0.1)
 {
@@ -165,6 +185,7 @@ vector<string> img2console(Mat img, int zoom, float threshold)
 }
 void video2console(int fps, unsigned long long totalFrames, VideoCapture cap, int zoom, float threshold)
 {
+    setFontSize(14);
     clock_t start, end;
     double total = 0, average;
     unsigned long long etc = 0x3f3f3f;
@@ -200,7 +221,7 @@ void video2console(int fps, unsigned long long totalFrames, VideoCapture cap, in
             system("cls");
             clog << round(1.0 * cnt / totalFrames * 100) << "% done,\t"
                 << (long long)round(average * (totalFrames - cnt)) % 3600 / 60 << "Min & "
-                << (long long)round(average * (totalFrames - cnt)) % 60 << " Sec etc.\t"
+                << (long long)round(average * (totalFrames - cnt)) % 60 << " Sec eta.\t"
                 << "(" << cnt << "/" << totalFrames << " Frames)"
                 << endl;
             clog << "[";
@@ -240,6 +261,8 @@ void ui(string filePath = "", char fileType = ' ')
         }
     }
 
+    setFontSize(6);
+    fullScreen();
     VideoCapture cap;
     Mat tmp, now;
     int Currentframe = 1;
@@ -378,6 +401,8 @@ void ui(string filePath = "", char fileType = ' ')
 
 int main(int argc, char *argv[])
 {
+    system("title Video2Console renderer");
+    setFontSize(14);
     string argv2;
     if (argc > 2)
     {
