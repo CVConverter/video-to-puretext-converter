@@ -26,7 +26,7 @@ for pictures, you can just click 'Enter' and copy the texts on the console.
   
 ## NOTICE
 - If it doesn't look right, try to maximize or full-screen the console window  
-(if it still doesn't look right, try to change the default value to make the console always be maximized when open.)  
+(if it's still doesn't look right, try to change the default value to make the console always be maximized when open.)  
   
 # How to compile and edit
 ## requirements:  
